@@ -58,6 +58,7 @@ RUN cd /usr/src && \
     make && make install
 
 COPY conf/httpd.conf /usr/local/apache2/conf/httpd.conf
+COPY conf/php.ini /etc/php/php.ini
 
 # Expose port 80 for Apache
 EXPOSE 80
