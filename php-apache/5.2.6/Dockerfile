@@ -50,14 +50,14 @@ RUN cd /usr/src && \
     cd .. && \
     rm -rf httpd-$VERSION_APACHE
 
-COPY patch/php5.2.6-libxml2-newbuffer.patch /tmp/php5.2.6-libxml2-newbuffer.patch
+COPY patch/php$VERSION_PHP-libxml2-newbuffer.patch /tmp/php$VERSION_PHP-libxml2-newbuffer.patch
 RUN cd /usr/src && \
     curl http://museum.php.net/php5/php-$VERSION_PHP.tar.gz -O && \
     tar -zxvf php-$VERSION_PHP.tar.gz && \
     rm php-$VERSION_PHP.tar.gz && \
     mv php-$VERSION_PHP php && \
     cd php && \
-    cat /tmp/php5.2.6-libxml2-newbuffer.patch | patch -p1 && \
+    cat /tmp/php$VERSION_PHP-libxml2-newbuffer.patch | patch -p1 && \
     ./configure  --with-config-file-path="$PHP_INI_DIR" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
         --with-apxs2=/usr/local/apache2/bin/apxs \
