@@ -52,7 +52,7 @@ RUN cd /usr/src && \
 
 COPY patch/php$VERSION_PHP-libxml2-newbuffer.patch /tmp/php$VERSION_PHP-libxml2-newbuffer.patch
 RUN cd /usr/src && \
-    curl http://museum.php.net/php5/php-$VERSION_PHP.tar.gz -O && \
+    curl https://museum.php.net/php5/php-$VERSION_PHP.tar.gz -OL --insecure && \
     tar -zxvf php-$VERSION_PHP.tar.gz && \
     rm php-$VERSION_PHP.tar.gz && \
     mv php-$VERSION_PHP php && \
