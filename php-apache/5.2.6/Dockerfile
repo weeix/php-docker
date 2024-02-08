@@ -39,7 +39,9 @@ RUN cd /usr/src && \
     --enable-cgi --enable-deflate --enable-dir --enable-env --enable-expires \
     --enable-geoip --enable-mime --enable-negotiation \
     --enable-setenvif  --enable-status --enable-authz_host && \
-    make && make install
+    make && make install && \
+    cd .. && \
+    rm -rf httpd-$VERSION_APACHE
 
 COPY php-5.2.6.tar.gz /usr/src/php-5.2.6.tar.gz
 COPY patch/php5.2.6-libxml2-newbuffer.patch /tmp/php5.2.6-libxml2-newbuffer.patch
@@ -60,7 +62,9 @@ RUN cd /usr/src && \
         --without-iconv \
         --enable-mbstring \
         --enable-zip && \
-    make && make install
+    make && make install && \
+    cd .. && \
+    rm -rf php
 
 COPY conf/httpd.conf /usr/local/apache2/conf/httpd.conf
 COPY conf/php.ini /etc/php/php.ini
