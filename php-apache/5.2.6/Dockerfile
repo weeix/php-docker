@@ -53,8 +53,13 @@ RUN cd /usr/src && \
     ./configure  --with-config-file-path="$PHP_INI_DIR" \
 		--with-config-file-scan-dir="$PHP_INI_DIR/conf.d" \
         --with-apxs2=/usr/local/apache2/bin/apxs \
+        --with-curl \
+        --with-gd \
 		--with-mysql \
-        --without-iconv && \
+        --with-pdo-mysql \
+        --without-iconv \
+        --enable-mbstring \
+        --enable-zip && \
     make && make install
 
 COPY conf/httpd.conf /usr/local/apache2/conf/httpd.conf
