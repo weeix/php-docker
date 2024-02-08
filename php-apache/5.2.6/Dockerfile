@@ -12,11 +12,18 @@ ENV PHP_INI_DIR /etc/php
 RUN mkdir -p $PHP_INI_DIR/conf.d
 
 # Update the system and install dependencies
-RUN rm /etc/apt/sources.list
-RUN echo "deb http://archive.debian.org/debian-security jessie/updates main" > /etc/apt/sources.list.d/jessie.list
-RUN echo "deb http://archive.debian.org/debian jessie main" >> /etc/apt/sources.list.d/jessie.list
-RUN apt-get update
-RUN apt-get install -y --force-yes build-essential libxml2-dev libmysqlclient-dev curl libcurl4-openssl-dev libssl-dev libjpeg-dev libpng12-dev && \
+RUN rm /etc/apt/sources.list && \
+    echo "deb http://archive.debian.org/debian-security jessie/updates main" > /etc/apt/sources.list.d/jessie.list && \
+    echo "deb http://archive.debian.org/debian jessie main" >> /etc/apt/sources.list.d/jessie.list
+RUN apt-get update && apt-get install -y --force-yes \
+        build-essential \
+        libxml2-dev \
+        libmysqlclient-dev \
+        curl \
+        libcurl4-openssl-dev \
+        libssl-dev \
+        libjpeg-dev \
+        libpng12-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /usr/lib/x86_64-linux-gnu/libjpeg.a /usr/lib/libjpeg.a \
