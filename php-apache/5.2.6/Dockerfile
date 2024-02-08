@@ -43,10 +43,9 @@ RUN cd /usr/src && \
     cd .. && \
     rm -rf httpd-$VERSION_APACHE
 
-COPY php-5.2.6.tar.gz /usr/src/php-5.2.6.tar.gz
 COPY patch/php5.2.6-libxml2-newbuffer.patch /tmp/php5.2.6-libxml2-newbuffer.patch
 RUN cd /usr/src && \
-    # curl http://museum.php.net/php5/php-$VERSION_PHP.tar.gz -O && \
+    curl http://museum.php.net/php5/php-$VERSION_PHP.tar.gz -O && \
     tar -zxvf php-$VERSION_PHP.tar.gz && \
     rm php-$VERSION_PHP.tar.gz && \
     mv php-$VERSION_PHP php && \
