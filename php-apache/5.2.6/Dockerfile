@@ -36,7 +36,7 @@ RUN ln -s /usr/lib/x86_64-linux-gnu/libjpeg.a /usr/lib/libjpeg.a \
     && ln -s /usr/lib/x86_64-linux-gnu/libmysqlclient_r.a /usr/lib/libmysqlclient_r.a
 
 RUN cd /usr/src && \
-    curl https://archive.apache.org/dist/httpd/httpd-$VERSION_APACHE.tar.gz -O && \
+    curl https://archive.apache.org/dist/httpd/httpd-$VERSION_APACHE.tar.gz -OL --insecure && \
     tar -zxvf httpd-$VERSION_APACHE.tar.gz && \
     rm httpd-$VERSION_APACHE.tar.gz && \
     cd httpd-$VERSION_APACHE && \
